@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalculateNotation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8964e02f2ba87bf10a08863ad0b2d714848e9afd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c874ae4b01dadd57c0a656106fa7d0623cb383")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalculateNotation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalculateNotation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
