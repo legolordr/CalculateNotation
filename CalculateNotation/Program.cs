@@ -4,13 +4,6 @@ using TranslateNotation;
 using CalculateNotation;
 class Program
 {
-    enum Operation
-    {
-        Calculate,
-        Addition,
-        Multiplication,
-        Translate
-    }
     public static string ReadInput(string prompt)
     {
         Console.WriteLine(prompt);
