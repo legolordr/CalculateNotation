@@ -12,15 +12,15 @@ class Program
     
     public static void Main()
     {
-        Console.WriteLine("Вы хотите перевести число из одной системы счисления в другую" +
-                                  "или выполнить арифметические операции?(t/k)");
+        Console.WriteLine("Вы хотите перевести число из одной системы счисления в другую " +
+                                  "или выполнить арифметические операции?(t/c)");
         char action = Console.ReadKey().KeyChar;
         
         if (action == 't')
         {
             try
             {
-                Console.WriteLine($"В качестве цифр используйте следующий набор:\n{Alphabet.Alphabet.FullAlphabet}");
+                Console.WriteLine($"\nВ качестве цифр используйте следующий набор:\n{Alphabet.Alphabet.FullAlphabet}");
 
                 string sourceBase = ReadInput("Укажите из какой системы счисления вы хотите перевести:");
                 string targetBase = ReadInput("Укажите в какую систему счисления вы хотите перевести:");
@@ -43,7 +43,7 @@ class Program
         {
             try
             {
-                string bases = ReadInput("Укажите в какой системы счисления будут производиться операции:");
+                string bases = ReadInput("\nУкажите в какой системы счисления будут производиться операции:");
 
                 string numberOne = ReadInput("Укажите первое число:");
                 new ArbitraryBaseNumber(int.Parse(bases), numberOne);
@@ -61,7 +61,7 @@ class Program
                     '*' => Calculate.Create(res,numberOne,numberTwo,int.Parse(bases)).Multiplication().ResultString,
                     _ => throw new InvalidOperationException()
                 };
-                Console.WriteLine(result);
+                Console.WriteLine($"\n{result}");
             }
             catch (Exception ex)
             {

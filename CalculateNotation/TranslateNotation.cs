@@ -14,18 +14,22 @@ public abstract class NumberSystem
         Value = value;
     }
     
-    public abstract DecimalNumber ToDecimal();
     public abstract NumberSystem ConvertTo(int targetBase);
     
     protected void Validate()
     {
         if (Base < 2 || Base > Alphabet.FullAlphabet.Length)
             throw new ArgumentException($"Основание системы должно быть от 2 до {Alphabet.FullAlphabet.Length}");
-            
+        bool firstIteration = true; 
         foreach (char digit in Value)
         {
+            if (firstIteration is false)
+            {
+                if (digit == '-') throw new ArgumentException(" - может стоять только в первом разряде");
+            }
             if (digit != '-' && digit != '.' && Alphabet.FullAlphabet.IndexOf(digit) >= Base)
                 throw new ArgumentException($"Цифра '{digit}' недопустима для системы с основанием {Base}");
+            firstIteration = false;
         }
     }
     
