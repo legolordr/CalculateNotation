@@ -5,8 +5,8 @@ using Alphabet;
 
 public abstract class NumberSystem
 {
-    public int Base { get; protected set; } // чтение доступно отовсюду, изменение только protected
-    public string Value { get; protected set; }
+    public int Base { get; }
+    public string Value { get;}
     
     protected NumberSystem(int numberBase, string value)
     {
@@ -17,7 +17,7 @@ public abstract class NumberSystem
     public abstract DecimalNumber ToDecimal();
     public abstract NumberSystem ConvertTo(int targetBase);
     
-    protected virtual void Validate()
+    protected void Validate()
     {
         if (Base < 2 || Base > Alphabet.FullAlphabet.Length)
             throw new ArgumentException($"Основание системы должно быть от 2 до {Alphabet.FullAlphabet.Length}");
@@ -34,8 +34,6 @@ public abstract class NumberSystem
 public class DecimalNumber : NumberSystem
 {
     public DecimalNumber(string value) : base(10, value) { }
-    
-    public DecimalNumber(double value) : base(10, value.ToString(CultureInfo.InvariantCulture)) { }
     
     public override DecimalNumber ToDecimal() => this;
     
@@ -147,8 +145,7 @@ public static class NumberSystemFactory
     {
         if (numberBase == 10)
             return new DecimalNumber(value);
-        else
-            return new ArbitraryBaseNumber(numberBase, value);
+        return new ArbitraryBaseNumber(numberBase, value);
     }
     
     public static NumberSystem Create(string numberBase, string value)
