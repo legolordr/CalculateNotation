@@ -19,9 +19,11 @@ class Program
     
     public static void Main()
     {
-        string action = ReadInput("Вы хотите перевести число из одной системы счисления в другую (translate) " +
-                                  "или выполнить арифметические операции (calculate)?").ToLower();
-        if (action == nameof(Operation.Translate).ToLower())
+        Console.WriteLine("Вы хотите перевести число из одной системы счисления в другую" +
+                                  "или выполнить арифметические операции?(t/k)");
+        char action = Console.ReadKey().KeyChar;
+        
+        if (action == 't')
         {
             try
             {
@@ -44,7 +46,7 @@ class Program
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
         }
-        else if (action == nameof(Operation.Calculate).ToLower())
+        else if (action == 'c')
         {
             try
             {
@@ -57,14 +59,13 @@ class Program
                 new ArbitraryBaseNumber(int.Parse(bases), numberTwo);
 
                 StringBuilder res = new StringBuilder();
-                string actionInCalculate = ReadInput("Укажите какую операцию вы хотите выполнить?\n+/*:");
-                if  (actionInCalculate == "+") actionInCalculate = nameof(Operation.Addition);
-                else if (actionInCalculate == "*") actionInCalculate = nameof(Operation.Multiplication);
+                Console.WriteLine("Укажите какую операцию вы хотите выполнить?(+/*):");
+                char actionInCalculate = Console.ReadKey().KeyChar;
                 
                 string result = actionInCalculate switch
                 {
-                    nameof(Operation.Addition) => Calculate.Create(res, numberOne, numberTwo, int.Parse(bases)).Addition().ResultString,
-                    nameof(Operation.Multiplication) => Calculate.Create(res,numberOne,numberTwo,int.Parse(bases)).Multiplication().ResultString,
+                    '+' => Calculate.Create(res, numberOne, numberTwo, int.Parse(bases)).Addition().ResultString,
+                    '*' => Calculate.Create(res,numberOne,numberTwo,int.Parse(bases)).Multiplication().ResultString,
                     _ => throw new InvalidOperationException()
                 };
                 Console.WriteLine(result);
