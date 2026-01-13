@@ -14,6 +14,7 @@ public abstract class NumberSystem
         Value = value;
     }
     
+    public abstract DecimalNumber ToDecimal();
     public abstract NumberSystem ConvertTo(int targetBase);
     
     protected void Validate()
